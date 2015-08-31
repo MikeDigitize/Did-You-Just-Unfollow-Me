@@ -1,20 +1,32 @@
 # Did You Just Unfollow Me?!
 A standalone Twitter app that keeps track of which of your (or any other user's) Twitter friends follow you back and which of your followers you aren't friends with, giving you the option to <strong>unfollow</strong> any friends who don't follow you back, and <strong>follow</strong> any followers that you aren't currently following. Clear as mud? Thought so.
 
+![Login](http://mikedigitize.com/img/djjufm/dyjufm1.jpg "Login")
+
 ## The Problem
-I'm quite a friendly, sociable guy on Twitter. If you follow me and are connected in some way to the web or technology chances are I'll follow you back. One day I looked through my list of Twitter friends and was surprised to see how many people had followed me and then after I'd followed them back had later unfollowed me. Since Twitter gives you no means to keep track of this happening I thought I'd build something to do it myself.
+I'm quite a friendly, sociable guy on Twitter. If you follow me and are connected in some way to the web or technology chances are I'll follow you back. One day I looked through my list of Twitter friends and was surprised to see how many people had followed me and then after I'd followed them back had later unfollowed me. Since Twitter gives you no means to keep track of this happening I thought I'd have some fun attempting to build something to do it myself.
 
 ## Usage
 Enter a Twitter handle e.g. @Your-Twitter-Name and hit search. The tool will search through that user's friends list and look for friends who don't follow that user back, and then search their followers for ones the user doesn't follow in return.
+
+![My friend Adeel's Twitter profile](http://mikedigitize.com/img/djjufm/dyjufm2.jpg "Seems my friend Adeel doesn't follow many people!")
+
+It shows you stats on how many friends / followers you have and how many friends follow you and how many followers you aren't friends with, and let's you browse through their profiles.
+
+![Browse through your followers / friends](http://mikedigitize.com/img/djjufm/dyjufm3.jpg "Browse through your followers / friends")
+
+If you choose to you can follow any followers you aren't currently friends with and unfollow any friends who don't follow you.
+
+![Follow / unfollow people](http://mikedigitize.com/img/djjufm/dyjufm4.jpg "Follow / unfollow people")
 
 ## Setup
 This is a standalone application that needs to be ran from your local machine. I've written the setup guide assuming no prior knowledge about JavaScript or web development, so hopefully any Twitter user will find it easy to follow.
 
 ### Install Node.js
-First thing's first. This is a web page application which needs a web server to run from so it can connect to Twitter and access all that sweet sweet Twitter data. This app uses Node.js as the server so if you don't already have it installed, go do it [now](https://nodejs.org/download/).
+First thing's first. This is a web page application which needs a web server to run from so it can connect to Twitter and access all that sweet sweet Twitter data. This app uses Node.js for that purpose so if you don't already have it installed, go do it [now](https://nodejs.org/download/).
 
 ### Create a Twitter app
-So that's the web server sorted. Now you need to hook this up to your Twitter account so you can unfollow / follow users. To do this you need to create your own Twitter app. Log into Twitter then jump over to [here](https://apps.twitter.com/). Now follow these steps:
+So that's the web server sorted. Now you need to hook this up to your Twitter account so you can unfollow / follow users. To do this you need to create your own Twitter app. Don't be put off this is actually really easy and painless. Log into Twitter then jump over to [here](https://apps.twitter.com/). Now follow these steps:
 
 1. Click the create new app button.
 2. If you haven't got a mobile number linked to your Twitter account you need to do that now [here](https://twitter.com/settings/devices). This is just for security reasons.
@@ -60,13 +72,13 @@ Almost there now. Open up the command prompt for your PC. Windows users can go t
 cd your-directory-file-path
 ```
 
-Once you're in the directory on the command line you can type
+Once you're in the directory on the command line you need to type
 
 ```unix
 npm install
 ```
 
-to install all the dependencies the app uses. 
+to install all the dependencies the app uses. Sit back and let Node handle all that for you.
 
 ### Starting the app
 On the command line in your app's directory type
@@ -81,7 +93,31 @@ to start the app up. Now open a new tab in your browser and go to
 http://localhost:1337
 ```
 
-to see the app. Success!!
+to see the app and voila! Have fun keeping tabs on your friends and followers!
 
 ## Usage Limit
-This app will only analyse the first 5,000 friends and followers a user has, so if you search for anyone who exceeds this number you'll get distorted results. The reason for this is that Twitter only allows you to make a limited amount of requests for data and once you exceed this amount they withhold access for a short period of time, usually 15 mins or so. Since Twitter only allows you to access data 100 users at a time, anything beyond 5,000 is going to exceed the limit.
+This app will only analyse the first 5,000 friends and followers a user has, so if you search for anyone who exceeds this number you'll get distorted results. The reason for this is that Twitter only allows you to make a limited amount of requests for data and once you exceed this amount they withhold access for a short period of time, usually 15 mins or so. Since Twitter only allows you to access data 100 users at a time, anything beyond 5,000 will exceed the limit. If Twitter ever relax this rule it would be easy to extend this out beyond 5,000 users.
+
+## Licence
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Michael Chadwick
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
