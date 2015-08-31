@@ -1,0 +1,26 @@
+.action-modal {
+    width: 300px;
+    position: fixed;
+    left: 50%;
+    top: -350px;
+    margin-left: -150px;
+    z-index: 3;
+    background: #fff;
+    padding: 20px;
+}
+
+.action-modal h3 {
+    margin-top: 0;
+}
+
+.modal-btn-cancel {
+    float: right;
+}
+
+.overlay {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 2;
+    opacity: 0;
+}

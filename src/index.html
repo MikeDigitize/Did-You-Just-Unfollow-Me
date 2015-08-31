@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Did you just unfollow me!?</title>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+    <div class="container app-holder">
+        <section id="header" class="row"></section>
+        <main id="twitterApp" class="row"></main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+    <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>{% } %}
+</body>
+</html>

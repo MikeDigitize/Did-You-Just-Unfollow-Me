@@ -1,0 +1,36 @@
+#loginForm label {
+    font-weight: normal;
+    color: #BBB;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    opacity : 0;
+}
+#screenName {
+    opacity : 0;
+    font-size: 50px;
+    text-align: center;
+    width: 100%;
+    height: 75px;
+    margin: 10px auto;
+}
+#submit {
+    max-width: 400px;
+    width: 1px;
+    opacity: 0;
+    height: 1px;
+    display: block;
+    margin: 10px auto;
+    color:#fff;
+    background: #55ACEE;
+}
+
+#submit:hover {
+    background: #0B96FF;
+}
+
+@media(max-width:490px) {
+    #screenName {
+        font-size: 32px;
+    }
+}

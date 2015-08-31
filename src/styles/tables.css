@@ -1,0 +1,202 @@
+.user-table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.user-table thead, .user-table tfoot {
+    background: #55ACEE;
+    color: #FFF;
+    text-align: center;
+    font-size: 18px;
+}
+
+.user-table tr {
+    background-size: cover;
+}
+
+.table-title {
+    text-align: center;
+    font-size: 24px;
+    padding: 10px;
+    background: #ededed;
+    border-top: 1px solid #DEDEDE;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.profile-banner {
+    width: 75%;
+    margin: auto;
+    background-size: cover;
+    position: relative;
+    padding-top: 20px;
+    top: 2px;
+}
+
+.friend-num {
+    position: absolute;
+    left: 59%;
+    top: 2px;
+    margin-left: -20px;
+    color: #FFF;
+    background: #55ACEE;
+    width: 40px;
+    height: 39px;
+    padding: 8px 0 10px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.friend-img-link {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    position: relative;
+    border: 1px solid #FFF;
+}
+
+.friend-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.friend-name {
+    display: block;
+    text-align: center;
+    color: #FFF;
+    font-size: 15px;
+    position: relative;
+    font-weight: bold;
+    background: #55ACEE;
+    padding-bottom: 1px;
+    margin-top: 10px;
+}
+
+.friend-info {
+    background-color: #FFF;
+    width: 75%;
+    margin: auto;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.friend-info:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+.friend-info hr {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 75%;
+}
+
+.friend-info hr.hr-wide {
+    width: 90%;
+}
+
+.friend-handle-link {
+    display: block;
+    color: #505050;
+    margin-top: 10px;
+}
+
+.friend-handle-link:hover {
+    color: #505050;
+}
+
+.friend-handle {
+    margin: 5px auto;
+    font-size: 11px;
+}
+
+.friend-location {
+    display: block;
+    text-align: center;
+    color: #999;
+    font-size: 15px;
+    position: relative;
+    margin-bottom: 2px;
+    margin-top: -7px;
+}
+
+.friend-timezone {
+    display: block;
+    text-align: center;
+    color: #999;
+    font-size: 10px;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.friend-description {
+    font-style: italic;
+    color: #666;
+    line-height: 12px;
+    font-size: 12px;
+    width: 80%;
+    margin: auto auto 10px;
+}
+.col-border-right {
+    border-right: 1px solid #ededed;
+}
+
+.count-holder a {
+    color: #000 !important;
+}
+
+.count-title {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.user-btn {
+    width: 125px;
+    margin: 5px auto 5px !important;
+    color: #fff !important;
+    background: #55ACEE;
+    transition: 1s background-color ease-in;
+}
+
+.user-btn:hover {
+    background: #2A9BF1;
+}
+
+.btn-holder {
+    border-top: 1px solid #EDEDED;
+}
+
+.next-page {
+    float: right;
+}
+
+.prev-page {
+    float: left;
+}
+
+.resultsTitle {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.resultsSize {
+    width: 35% !important;
+    margin: auto;
+    text-indent: 20px;
+}
+
+.resultsDisplayed {
+    text-align: center;
+    display: block;
+    margin-top: 6px;
+}
+
+.table-head-cell span {
+    position: relative;
+    top: 3px;
+}
+

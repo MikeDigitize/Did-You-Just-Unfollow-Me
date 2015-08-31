@@ -1,0 +1,21 @@
+body {
+    background: #ededed !important;
+}
+
+.app-holder {
+    min-width: 400px;
+    background: #F9F9F9 !important;
+    padding-bottom: 10px;
+}
+
+.state-msg {
+    text-align: center;
+    font-weight: bold;
+    color: #bbbbbb;
+}
+
+hr {
+    width: 100%;
+    border-top: 1px solid #D4D4D4;
+}
+
