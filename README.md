@@ -44,7 +44,7 @@ Awesome! You now have an app registered to your account. So there's just a few m
 4. Scroll down to the Access Token section.
 5. Click create my access token.
 
-Excellent! From Twitter's perspective you are good to go. Keep this page open because you need some of the details listed here, specifically the:
+Excellent! You now have an access token, think of it as a password so don't share it with anyone, and a few other keys required to hook into Twitter's data. From Twitter's perspective you are good to go. Keep this page open because you need your access token and other details listed here, specifically the:
 
 * Consumer Key (API Key)
 * Consumer Secret (API Secret)
@@ -63,7 +63,7 @@ module.exports = {
 };
 ```
 
-Save the file (it should be in the root of the folder, not in any sub folders). 
+Save the file (it should be in the root of the folder, not in any sub folders). Congrats! You've just created a tiny JavaScript file which the app will use to verify access permissions when it connects to Twitter. 
 
 ### Installing the app's dependencies
 Almost there now. Open up the command prompt for your PC. Windows users can go the Start menu and type cmd into the search box to launch it. You need to navigate to the app directory so get its full file path e.g. if it's on your desktop it would be something like C:\Users\Your_User_Name\Desktop so type cd and then the file path and hit enter. 
@@ -72,16 +72,16 @@ Almost there now. Open up the command prompt for your PC. Windows users can go t
 cd your-directory-file-path
 ```
 
-Once you're in the directory on the command line you need to type
+The Node server needs a bit of software installing before you launch it, so once you're in the directory on the command line you need to type
 
 ```unix
 npm install
 ```
 
-to install all the dependencies the app uses. Sit back and let Node handle all that for you.
+to install all these dependencies. Sit back and let Node handle installing all that for you.
 
 ### Starting the app
-On the command line in your app's directory type
+Once everything's installed, on the command line in your app's directory type
 
 ```unix
 npm start
@@ -93,10 +93,10 @@ to start the app up. Now open a new tab in your browser and go to
 http://localhost:1337
 ```
 
-to see the app and voila! Have fun keeping tabs on your friends and followers!
+to see the app and voila you're all done! Have fun keeping tabs on your friends and followers!
 
 ## Usage Limit
-This app will only analyse the first 5,000 friends and followers a user has, so if you search for anyone who exceeds this number you'll get distorted results. The reason for this is that Twitter only allows you to make a limited amount of requests for data and once you exceed this amount they withhold access for a short period of time, usually 15 mins or so. Since Twitter only allows you to access data 100 users at a time, anything beyond 5,000 will exceed the limit. If Twitter ever relax this rule it would be easy to extend this out beyond 5,000 users.
+This app will only analyse the first 5,000 friends and followers a user has, so if you search for anyone who exceeds this number you'll get distorted results. The reason for this is that Twitter only allows you to make a limited amount of requests for data and once you exceed this amount they withhold access for a short period of time, usually 15 mins or so. Since Twitter only allows you to access data 100 users at a time, anything beyond 5,000 will exceed the limit. If Twitter ever relax this rule it would be easy to extend this out beyond 5,000 users but for now that's what we're stuck with!
 
 ## Licence
 
