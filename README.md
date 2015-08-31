@@ -20,7 +20,7 @@ If you choose to you can follow any followers you aren't currently friends with 
 ![Follow / unfollow people](http://mikedigitize.com/img/djjufm/dyjufm4.jpg "Follow / unfollow people")
 
 ## Setup
-This is a standalone application that needs to be ran from your local machine. I've written the setup guide assuming no prior knowledge about JavaScript or web development, so hopefully any Twitter user will find it easy to follow.
+This is a standalone application that needs to run from your local machine. I've written the setup guide assuming no prior knowledge about JavaScript or web development, so hopefully any Twitter user will find it easy to follow.
 
 ### Install Node.js
 First thing's first. This is a web page application which needs a web server to run from so it can connect to Twitter and access all that sweet sweet Twitter data. This app uses Node.js for that purpose so if you don't already have it installed, go do it [now](https://nodejs.org/download/).
@@ -44,7 +44,7 @@ Awesome! You now have an app registered to your account. So there's just a few m
 4. Scroll down to the Access Token section.
 5. Click create my access token.
 
-Excellent! You now have an access token, think of it as a password so don't share it with anyone, and a few other keys required to hook into Twitter's data. From Twitter's perspective you are good to go. Keep this page open because you need your access token and other details listed here, specifically the:
+Excellent! You now have an access token, think of it as a password (so don't share it with anyone), and a few other keys required to hook into Twitter's data. From Twitter's perspective you are good to go. Keep this page open because you need your access token and other details listed here, specifically the:
 
 * Consumer Key (API Key)
 * Consumer Secret (API Secret)
@@ -52,7 +52,7 @@ Excellent! You now have an access token, think of it as a password so don't shar
 * Access Token Secret
 
 ### Create the config file
-So now for the final piece of the puzzle. Download this app from the download zip option on the right of this page and save / unzip it to a suitable location in your hard drive. Open the folder and create a new file. Call it twitter-config.js. Open this file in a text editor or notepad and copy the following into it replacing the quoted text with the relevant text from your Twitter app:
+So now for the final piece of the puzzle. Download this app from the download zip option on the right of this page and save / unzip it to a suitable location in your hard drive. Open the folder and create a new file. Call it twitter-config.js. Make sure the file extension is .js. Open this file in a text editor or notepad and copy the following into it replacing the quoted text with the relevant text from your Twitter app:
 
 ```javascript
 module.exports = {
@@ -63,22 +63,22 @@ module.exports = {
 };
 ```
 
-Save the file (it should be in the root of the folder, not in any sub folders). Congrats! You've just created a tiny JavaScript file which the app will use to verify access permissions when it connects to Twitter. 
+Save the JavaScript file in the directory (it should be in the root of the folder, not in any sub folders). The app will use this file to verify access permissions when it connects to Twitter. 
 
 ### Installing the app's dependencies
 Almost there now. Open up the command prompt for your PC. Windows users can go the Start menu and type cmd into the search box to launch it. You need to navigate to the app directory so get its full file path e.g. if it's on your desktop it would be something like C:\Users\Your_User_Name\Desktop so type cd and then the file path and hit enter. 
 
 ```unix
-cd your-directory-file-path
+cd C:\your\directory\file\path
 ```
 
-The Node server needs a bit of software installing before you launch it, so once you're in the directory on the command line you need to type
+The Node server needs a bit of software installing to help run the app before you launch it, so once you're in the directory on the command line type
 
 ```unix
 npm install
 ```
 
-to install all these dependencies. Sit back and let Node handle installing all that for you.
+to install the dependencies. Sit back and let Node install everything it needs.
 
 ### Starting the app
 Once everything's installed, on the command line in your app's directory type
@@ -97,27 +97,3 @@ to see the app and voila you're all done! Have fun keeping tabs on your friends 
 
 ## Usage Limit
 This app will only analyse the first 5,000 friends and followers a user has, so if you search for anyone who exceeds this number you'll get distorted results. The reason for this is that Twitter only allows you to make a limited amount of requests for data and once you exceed this amount they withhold access for a short period of time, usually 15 mins or so. Since Twitter only allows you to access data 100 users at a time, anything beyond 5,000 will exceed the limit. If Twitter ever relax this rule it would be easy to extend this out beyond 5,000 users but for now that's what we're stuck with!
-
-## Licence
-
-The MIT License (MIT)
-
-Copyright (c) 2015 Michael Chadwick
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
