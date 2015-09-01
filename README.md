@@ -1,5 +1,5 @@
 # Did You Just Unfollow Me?!
-A standalone Twitter app that keeps track of which of your (or any other user's) Twitter friends follow you back and which of your followers you aren't friends with, giving you the option to <strong>unfollow</strong> any friends who don't follow you back, and <strong>follow</strong> any followers that you aren't currently following. Clear as mud? Thought so.
+A standalone Twitter app that keeps track of which of your Twitter friends follow you back and which of your followers you aren't friends with, giving you the option to <strong>unfollow</strong> any friends who don't follow you back, and <strong>follow</strong> any followers that you aren't currently following. Clear as mud? Thought so.
 
 ![Login](http://mikedigitize.com/img/djjufm/dyjufm1.jpg "Login")
 
@@ -7,7 +7,7 @@ A standalone Twitter app that keeps track of which of your (or any other user's)
 I'm quite a friendly, sociable guy on Twitter. If you follow me and are connected in some way to the web or technology chances are I'll follow you back. One day I looked through my list of Twitter friends and was surprised to see how many people had followed me and then after I'd followed them back had later unfollowed me. Since Twitter gives you no means to keep track of this happening I thought I'd have some fun attempting to build something to do it myself.
 
 ## Usage
-Enter a Twitter handle e.g. @Your-Twitter-Name and hit search. The tool will search through that user's friends list and look for friends who don't follow that user back, and then search their followers for ones the user doesn't follow in return.
+Enter any Twitter handle e.g. @Your-Twitter-Name and hit search. The tool will search through that user's friends list and look for friends who don't follow that user back, and then search their followers for ones the user doesn't follow in return.
 
 ![My friend Adeel's Twitter profile](http://mikedigitize.com/img/djjufm/dyjufm2.jpg "Seems my friend Adeel doesn't follow many people!")
 
