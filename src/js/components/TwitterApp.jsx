@@ -94,7 +94,7 @@ export default class TwitterApp extends React.Component {
                         <FriendsWhoDontFollow />
                     </div>
                     <div className="col-xs-12">
-                        <h4 className="table-title">Followers who you're not following</h4>
+                        <h4 className="table-title">Followers you're not friends with</h4>
                     </div>
                     <div className="col-md-8 col-md-offset-2">
                         <FollowersNotFriendsWith />
