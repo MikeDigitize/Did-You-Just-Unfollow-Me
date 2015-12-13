@@ -170,90 +170,98 @@ export default class FNFWTable extends React.Component {
 
         let url = "https://twitter.com/";
 
-        let markup = this.state.usersToDisplay.map((follower, i) => {
+        if(this.state.usersToDisplay.length) {
 
-            let bkimg = follower.profile_background_image_url_https ? "url(" + follower.profile_background_image_url_https + ") top center / cover no-repeat" : "#666";
-            let background = { background : bkimg };
-            let bimg = follower.profile_banner_url ? "url(" + follower.profile_banner_url + ") top center / cover no-repeat" : "#666";
-            let banner = { background : bimg };
+            let markup = this.state.usersToDisplay.map((follower, i) => {
+
+                let bkimg = follower.profile_background_image_url_https ? "url(" + follower.profile_background_image_url_https + ") top center / cover no-repeat" : "#666";
+                let background = { background : bkimg };
+                let bimg = follower.profile_banner_url ? "url(" + follower.profile_banner_url + ") top center / cover no-repeat" : "#666";
+                let banner = { background : bimg };
+
+                return (
+                    <tr key={i} style={background} className="user-row">
+                        <td>
+                            <div className="profile-banner" style={banner}>
+                                <span className="friend-num">{Format((i + 1) + (this.state.page * this.state.results))}</span>
+                                <a className="friend-img-link" target="_blank" href={url + follower.screen_name}>
+                                    <img className="friend-img" src={follower.profile_image_url} />
+                                </a>
+                                <span className="friend-name">{follower.name}</span>
+                            </div>
+                            <div className="friend-info">
+                                <div className="col-sm-12">
+                                    <a target="_blank" className="friend-handle-link" href={url + follower.screen_name}>
+                                        <p className="friend-handle">@{follower.screen_name}</p>
+                                    </a>
+                                    <p className="friend-location">{ follower.location || "No location" }</p>
+                                    <p className="friend-description">{ follower.description || "No description" }</p>
+                                    <hr className="hr-wide" />
+                                </div>
+                                <div className="count-holder row">
+                                    <div className="col-xs-6 col-border-right">
+                                        <a target="_blank" href={url + follower.screen_name + "/following" }>
+                                            <p className="count-title">Friends</p>
+                                            <p className="count">{ Format(follower.friends_count) }</p>
+                                        </a>
+                                    </div>
+                                    <div className="col-xs-6">
+                                        <a target="_blank" href={url + follower.screen_name + "/followers" }>
+                                            <p className="count-title">Followers</p>
+                                            <p className="count">{ Format(follower.followers_count) }</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="col-sm-12 btn-holder">
+                                    <button className="btn user-btn" data-id={follower.id_str} onClick={this.followFollower.bind(this)}>Follow</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                );
+
+            });
 
             return (
-                <tr key={i} style={background} className="user-row">
-                    <td>
-                        <div className="profile-banner" style={banner}>
-                            <span className="friend-num">{Format((i + 1) + (this.state.page * this.state.results))}</span>
-                            <a className="friend-img-link" target="_blank" href={url + follower.screen_name}>
-                                <img className="friend-img" src={follower.profile_image_url} />
-                            </a>
-                            <span className="friend-name">{follower.name}</span>
+                <div>
+                    <div className="col-sm-8 col-sm-offset-2">
+                        <div className="col-sm-8 col-sm-offset-2">
+                            <ResultsSelect
+                                setPageResults={this.setPageResults.bind(this)}
+                                min={this.state.displaying.min + 1}
+                                max={this.state.displaying.max}
+                                count = {this.state.followersNotFriendsWith.length}
+                                id="followers-select"
+                            />
                         </div>
-                        <div className="friend-info">
-                            <div className="col-sm-12">
-                                <a target="_blank" className="friend-handle-link" href={url + follower.screen_name}>
-                                    <p className="friend-handle">@{follower.screen_name}</p>
-                                </a>
-                                <p className="friend-location">{ follower.location || "No location" }</p>
-                                <p className="friend-description">{ follower.description || "No description" }</p>
-                                <hr className="hr-wide" />
-                            </div>
-                            <div className="count-holder row">
-                                <div className="col-xs-6 col-border-right">
-                                    <a target="_blank" href={url + follower.screen_name + "/following" }>
-                                        <p className="count-title">Friends</p>
-                                        <p className="count">{ Format(follower.friends_count) }</p>
-                                    </a>
-                                </div>
-                                <div className="col-xs-6">
-                                    <a target="_blank" href={url + follower.screen_name + "/followers" }>
-                                        <p className="count-title">Followers</p>
-                                        <p className="count">{ Format(follower.followers_count) }</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="col-sm-12 btn-holder">
-                                <button className="btn user-btn" data-id={follower.id_str} onClick={this.followFollower.bind(this)}>Follow</button>
-                            </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-8 col-sm-offset-2">
+                            <table className="table table-bordered user-table" id="followers">
+                                <thead>
+                                <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} title="Followers" />
+                                </thead>
+                                <tbody>
+                                { markup }
+                                </tbody>
+                                <tfoot>
+                                <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} />
+                                </tfoot>
+                            </table>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                    <Modal
+                        msg="Are you sure you want to follow userX?"
+                        onShow="show-follow-modal"
+                        onUserInput={ this.modalConfirm.bind(this) }
+                    />
+                </div>
             );
 
-        });
+        }
+        else {
+            return false;
+        }
 
-        return (
-            <div>
-                <div className="col-sm-8 col-sm-offset-2">
-                    <div className="col-sm-8 col-sm-offset-2">
-                        <ResultsSelect
-                            setPageResults={this.setPageResults.bind(this)}
-                            min={this.state.displaying.min + 1}
-                            max={this.state.displaying.max}
-                            count = {this.state.followersNotFriendsWith.length}
-                            id="followers-select"
-                        />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-8 col-sm-offset-2">
-                        <table className="table table-bordered user-table" id="followers">
-                            <thead>
-                                <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} title="Followers" />
-                            </thead>
-                            <tbody>
-                                { markup }
-                            </tbody>
-                            <tfoot>
-                                <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} />
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-                <Modal
-                    msg="Are you sure you want to follow userX?"
-                    onShow="show-follow-modal"
-                    onUserInput={ this.modalConfirm.bind(this) }
-                    />
-            </div>
-        );
     }
 }

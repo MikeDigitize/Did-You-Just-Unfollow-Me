@@ -195,7 +195,7 @@ TwitterClient.prototype.getUserData = function (params, arrTo, arrFrom, resolve,
 
     params.user_id = payload.join();
 
-    client.get("/users/lookup.json", params, function(error, data) {
+    client.post("/users/lookup.json", params, function(error, data) {
         if (!error) {
             arrTo = arrTo.concat(data);
             if(arrFrom.length) {

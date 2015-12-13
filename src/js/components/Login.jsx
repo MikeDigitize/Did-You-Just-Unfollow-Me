@@ -6,7 +6,7 @@ import "styles/login.css";
 export default class ScreenNameForm extends React.Component {
 
     constructor() {
-        super(...arguments);
+        super();
         Events.subscribe("re-enable-login", this.reset.bind(this));
         Events.subscribe("show-login", this.show.bind(this));
     }
