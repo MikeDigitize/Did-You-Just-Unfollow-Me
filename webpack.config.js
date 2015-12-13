@@ -29,9 +29,10 @@ module.exports = {
             loader: ExtractTextPlugin.extract("style-loader", "css-loader")
         }]
     },
+    watch : true,
     plugins:[
         new HtmlWebpackPlugin({ template: "./src/index.html"}),
-        new Uglify(),
+        //new Uglify(),
         new ExtractTextPlugin("[name].css")
     ]
 };

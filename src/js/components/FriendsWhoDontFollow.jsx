@@ -10,7 +10,7 @@ export default class FWDFTable extends React.Component {
 
     constructor() {
 
-        super(...arguments);
+        super();
         this.state = {
             friendsWhoDontFollow : [],
             usersToDisplay : [],
@@ -168,89 +168,96 @@ export default class FWDFTable extends React.Component {
 
         let url = "https://twitter.com/";
 
-        let markup = this.state.usersToDisplay.map((friend, i) => {
+        if(this.state.usersToDisplay.length) {
+            let markup = this.state.usersToDisplay.map((friend, i) => {
 
-            let bkimg = friend.profile_background_image_url_https ? "url(" + friend.profile_background_image_url_https + ") top center / cover no-repeat" : "#666";
-            let background = { background : bkimg };
-            let bannerImg = friend.profile_banner_url ? "url(" + friend.profile_banner_url + ") top center / cover no-repeat" : "#666";
-            let banner = { background : bannerImg };
+                let bkimg = friend.profile_background_image_url_https ? "url(" + friend.profile_background_image_url_https + ") top center / cover no-repeat" : "#666";
+                let background = { background : bkimg };
+                let bannerImg = friend.profile_banner_url ? "url(" + friend.profile_banner_url + ") top center / cover no-repeat" : "#666";
+                let banner = { background : bannerImg };
+
+                return (
+                    <tr key={i} style={background} className="user-row">
+                        <td>
+                            <div className="profile-banner" style={banner}>
+                                <span className="friend-num">{Format((i + 1) + (this.state.page * this.state.results))}</span>
+                                <a target="_blank" className="friend-img-link" href={url + friend.screen_name}>
+                                    <img className="friend-img" src={friend.profile_image_url} />
+                                </a>
+                                <span className="friend-name">{friend.name}</span>
+                            </div>
+                            <div className="friend-info">
+                                <div className="col-sm-12">
+                                    <a target="_blank" className="friend-handle-link" href={url + friend.screen_name}>
+                                        <p className="friend-handle">@{friend.screen_name}</p>
+                                    </a>
+                                    <p className="friend-location">{ friend.location || "No location" }</p>
+                                    <p className="friend-description">{ friend.description || "No description" }</p>
+                                    <hr className="hr-wide" />
+                                </div>
+                                <div className="count-holder row">
+                                    <div className="col-xs-6 col-border-right">
+                                        <a target="_blank" href={url + friend.screen_name + "/following" }>
+                                            <p className="count-title">Friends</p>
+                                            <p className="count">{ Format(friend.friends_count) }</p>
+                                        </a>
+                                    </div>
+                                    <div className="col-xs-6">
+                                        <a target="_blank" href={url + friend.screen_name + "/followers" }>
+                                            <p className="count-title">Followers</p>
+                                            <p className="count">{ Format(friend.followers_count) }</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="col-sm-12 btn-holder">
+                                    <button className="btn user-btn" data-id={friend.id_str} onClick={this.unfollowFriend.bind(this)}>Unfollow</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                );
+            });
 
             return (
-                <tr key={i} style={background} className="user-row">
-                    <td>
-                        <div className="profile-banner" style={banner}>
-                            <span className="friend-num">{Format((i + 1) + (this.state.page * this.state.results))}</span>
-                            <a target="_blank" className="friend-img-link" href={url + friend.screen_name}>
-                                <img className="friend-img" src={friend.profile_image_url} />
-                            </a>
-                            <span className="friend-name">{friend.name}</span>
-                        </div>
-                        <div className="friend-info">
-                            <div className="col-sm-12">
-                                <a target="_blank" className="friend-handle-link" href={url + friend.screen_name}>
-                                    <p className="friend-handle">@{friend.screen_name}</p>
-                                </a>
-                                <p className="friend-location">{ friend.location || "No location" }</p>
-                                <p className="friend-description">{ friend.description || "No description" }</p>
-                                <hr className="hr-wide" />
-                            </div>
-                            <div className="count-holder row">
-                                <div className="col-xs-6 col-border-right">
-                                    <a target="_blank" href={url + friend.screen_name + "/following" }>
-                                        <p className="count-title">Friends</p>
-                                        <p className="count">{ Format(friend.friends_count) }</p>
-                                    </a>
-                                </div>
-                                <div className="col-xs-6">
-                                    <a target="_blank" href={url + friend.screen_name + "/followers" }>
-                                        <p className="count-title">Followers</p>
-                                        <p className="count">{ Format(friend.followers_count) }</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="col-sm-12 btn-holder">
-                                <button className="btn user-btn" data-id={friend.id_str} onClick={this.unfollowFriend.bind(this)}>Unfollow</button>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            );
-        });
-
-        return (
-            <div>
-                <div className="col-sm-8 col-sm-offset-2">
+                <div>
                     <div className="col-sm-8 col-sm-offset-2">
-                        <ResultsSelect
-                            setPageResults={this.setPageResults.bind(this)}
-                            min={this.state.displaying.min + 1}
-                            max={this.state.displaying.max}
-                            count = {this.state.friendsWhoDontFollow.length}
-                            id="friends-select"
-                        />
+                        <div className="col-sm-8 col-sm-offset-2">
+                            <ResultsSelect
+                                setPageResults={this.setPageResults.bind(this)}
+                                min={this.state.displaying.min + 1}
+                                max={this.state.displaying.max}
+                                count = {this.state.friendsWhoDontFollow.length}
+                                id="friends-select"
+                            />
+                        </div>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-8 col-sm-offset-2">
-                        <table className="table table-bordered user-table">
-                            <thead>
+                    <div className="row">
+                        <div className="col-sm-8 col-sm-offset-2">
+                            <table className="table table-bordered user-table">
+                                <thead>
                                 <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this) } title="Friends" />
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 { markup }
-                            </tbody>
-                            <tfoot>
+                                </tbody>
+                                <tfoot>
                                 <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} />
-                            </tfoot>
-                        </table>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <Modal
-                    msg="Are you sure you want to unfollow userX?"
-                    onShow="show-unfollow-modal"
-                    onUserInput={ this.modalConfirm.bind(this) }
+                    <Modal
+                        msg="Are you sure you want to unfollow userX?"
+                        onShow="show-unfollow-modal"
+                        onUserInput={ this.modalConfirm.bind(this) }
                     />
-            </div>
-        );
+                </div>
+            );
+
+        }
+        else {
+            return false;
+        }
+
     }
 }
