@@ -219,39 +219,44 @@ export default class FWDFTable extends React.Component {
             });
 
             return (
-                <div>
-                    <div className="col-sm-8 col-sm-offset-2">
+                <div className="col-xs-12">
+                    <h4 className="table-title">Friends who don't follow you</h4>
+                    <div className="col-md-8 col-md-offset-2">
+                        <div>
                         <div className="col-sm-8 col-sm-offset-2">
-                            <ResultsSelect
-                                setPageResults={this.setPageResults.bind(this)}
-                                min={this.state.displaying.min + 1}
-                                max={this.state.displaying.max}
-                                count = {this.state.friendsWhoDontFollow.length}
-                                id="friends-select"
-                            />
+                            <div className="col-sm-8 col-sm-offset-2">
+                                <ResultsSelect
+                                    setPageResults={this.setPageResults.bind(this)}
+                                    min={this.state.displaying.min + 1}
+                                    max={this.state.displaying.max}
+                                    count = {this.state.friendsWhoDontFollow.length}
+                                    id="friends-select"
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-8 col-sm-offset-2">
-                            <table className="table table-bordered user-table">
-                                <thead>
-                                <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this) } title="Friends" />
-                                </thead>
-                                <tbody>
-                                { markup }
-                                </tbody>
-                                <tfoot>
-                                <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} />
-                                </tfoot>
-                            </table>
+                        <div className="row">
+                            <div className="col-sm-8 col-sm-offset-2">
+                                <table className="table table-bordered user-table">
+                                    <thead>
+                                    <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this) } title="Friends" />
+                                    </thead>
+                                    <tbody>
+                                    { markup }
+                                    </tbody>
+                                    <tfoot>
+                                    <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} />
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
+                        <Modal
+                            msg="Are you sure you want to unfollow userX?"
+                            onShow="show-unfollow-modal"
+                            onUserInput={ this.modalConfirm.bind(this) }
+                        />
                     </div>
-                    <Modal
-                        msg="Are you sure you want to unfollow userX?"
-                        onShow="show-unfollow-modal"
-                        onUserInput={ this.modalConfirm.bind(this) }
-                    />
                 </div>
+            </div>
             );
 
         }

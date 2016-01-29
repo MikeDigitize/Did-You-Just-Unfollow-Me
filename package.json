@@ -4,7 +4,7 @@
   "description": "A Twitter app to check which Twitter friends follow you back and which of your followers you're not friends with.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js & webpack",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mike Chadwick",

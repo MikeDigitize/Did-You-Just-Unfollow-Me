@@ -20598,34 +20598,8 @@
 	                        { className: "col-md-8 col-md-offset-2" },
 	                        _react2["default"].createElement(_InfoJsx2["default"], null)
 	                    ),
-	                    _react2["default"].createElement(
-	                        "div",
-	                        { className: "col-xs-12" },
-	                        _react2["default"].createElement(
-	                            "h4",
-	                            { className: "table-title" },
-	                            "Friends who don't follow you"
-	                        )
-	                    ),
-	                    _react2["default"].createElement(
-	                        "div",
-	                        { className: "col-md-8 col-md-offset-2" },
-	                        _react2["default"].createElement(_FriendsWhoDontFollowJsx2["default"], null)
-	                    ),
-	                    _react2["default"].createElement(
-	                        "div",
-	                        { className: "col-xs-12" },
-	                        _react2["default"].createElement(
-	                            "h4",
-	                            { className: "table-title" },
-	                            "Followers you're not friends with"
-	                        )
-	                    ),
-	                    _react2["default"].createElement(
-	                        "div",
-	                        { className: "col-md-8 col-md-offset-2" },
-	                        _react2["default"].createElement(_FollowersNotFriendsWithJsx2["default"], null)
-	                    )
+	                    _react2["default"].createElement(_FriendsWhoDontFollowJsx2["default"], null),
+	                    _react2["default"].createElement(_FollowersNotFriendsWithJsx2["default"], null)
 	                );
 	            }
 
@@ -23051,54 +23025,67 @@
 
 	                return _react2["default"].createElement(
 	                    "div",
-	                    null,
+	                    { className: "col-xs-12" },
+	                    _react2["default"].createElement(
+	                        "h4",
+	                        { className: "table-title" },
+	                        "Friends who don't follow you"
+	                    ),
 	                    _react2["default"].createElement(
 	                        "div",
-	                        { className: "col-sm-8 col-sm-offset-2" },
+	                        { className: "col-md-8 col-md-offset-2" },
 	                        _react2["default"].createElement(
 	                            "div",
-	                            { className: "col-sm-8 col-sm-offset-2" },
-	                            _react2["default"].createElement(_ResultsSelectJsx2["default"], {
-	                                setPageResults: this.setPageResults.bind(this),
-	                                min: this.state.displaying.min + 1,
-	                                max: this.state.displaying.max,
-	                                count: this.state.friendsWhoDontFollow.length,
-	                                id: "friends-select"
+	                            null,
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "col-sm-8 col-sm-offset-2" },
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "col-sm-8 col-sm-offset-2" },
+	                                    _react2["default"].createElement(_ResultsSelectJsx2["default"], {
+	                                        setPageResults: this.setPageResults.bind(this),
+	                                        min: this.state.displaying.min + 1,
+	                                        max: this.state.displaying.max,
+	                                        count: this.state.friendsWhoDontFollow.length,
+	                                        id: "friends-select"
+	                                    })
+	                                )
+	                            ),
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "row" },
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "col-sm-8 col-sm-offset-2" },
+	                                    _react2["default"].createElement(
+	                                        "table",
+	                                        { className: "table table-bordered user-table" },
+	                                        _react2["default"].createElement(
+	                                            "thead",
+	                                            null,
+	                                            _react2["default"].createElement(_NavButtonsRowJsx2["default"], { prev: this.prevPage.bind(this), next: this.nextPage.bind(this), title: "Friends" })
+	                                        ),
+	                                        _react2["default"].createElement(
+	                                            "tbody",
+	                                            null,
+	                                            markup
+	                                        ),
+	                                        _react2["default"].createElement(
+	                                            "tfoot",
+	                                            null,
+	                                            _react2["default"].createElement(_NavButtonsRowJsx2["default"], { prev: this.prevPage.bind(this), next: this.nextPage.bind(this) })
+	                                        )
+	                                    )
+	                                )
+	                            ),
+	                            _react2["default"].createElement(_ModalJsx2["default"], {
+	                                msg: "Are you sure you want to unfollow userX?",
+	                                onShow: "show-unfollow-modal",
+	                                onUserInput: this.modalConfirm.bind(this)
 	                            })
 	                        )
-	                    ),
-	                    _react2["default"].createElement(
-	                        "div",
-	                        { className: "row" },
-	                        _react2["default"].createElement(
-	                            "div",
-	                            { className: "col-sm-8 col-sm-offset-2" },
-	                            _react2["default"].createElement(
-	                                "table",
-	                                { className: "table table-bordered user-table" },
-	                                _react2["default"].createElement(
-	                                    "thead",
-	                                    null,
-	                                    _react2["default"].createElement(_NavButtonsRowJsx2["default"], { prev: this.prevPage.bind(this), next: this.nextPage.bind(this), title: "Friends" })
-	                                ),
-	                                _react2["default"].createElement(
-	                                    "tbody",
-	                                    null,
-	                                    markup
-	                                ),
-	                                _react2["default"].createElement(
-	                                    "tfoot",
-	                                    null,
-	                                    _react2["default"].createElement(_NavButtonsRowJsx2["default"], { prev: this.prevPage.bind(this), next: this.nextPage.bind(this) })
-	                                )
-	                            )
-	                        )
-	                    ),
-	                    _react2["default"].createElement(_ModalJsx2["default"], {
-	                        msg: "Are you sure you want to unfollow userX?",
-	                        onShow: "show-unfollow-modal",
-	                        onUserInput: this.modalConfirm.bind(this)
-	                    })
+	                    )
 	                );
 	            } else {
 	                return false;
@@ -23848,54 +23835,67 @@
 
 	                return _react2["default"].createElement(
 	                    "div",
-	                    null,
+	                    { className: "col-xs-12" },
+	                    _react2["default"].createElement(
+	                        "h4",
+	                        { className: "table-title" },
+	                        "Followers you're not friends with"
+	                    ),
 	                    _react2["default"].createElement(
 	                        "div",
-	                        { className: "col-sm-8 col-sm-offset-2" },
+	                        { className: "col-md-8 col-md-offset-2" },
 	                        _react2["default"].createElement(
 	                            "div",
-	                            { className: "col-sm-8 col-sm-offset-2" },
-	                            _react2["default"].createElement(_ResultsSelectJsx2["default"], {
-	                                setPageResults: this.setPageResults.bind(this),
-	                                min: this.state.displaying.min + 1,
-	                                max: this.state.displaying.max,
-	                                count: this.state.followersNotFriendsWith.length,
-	                                id: "followers-select"
+	                            null,
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "col-sm-8 col-sm-offset-2" },
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "col-sm-8 col-sm-offset-2" },
+	                                    _react2["default"].createElement(_ResultsSelectJsx2["default"], {
+	                                        setPageResults: this.setPageResults.bind(this),
+	                                        min: this.state.displaying.min + 1,
+	                                        max: this.state.displaying.max,
+	                                        count: this.state.followersNotFriendsWith.length,
+	                                        id: "followers-select"
+	                                    })
+	                                )
+	                            ),
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "row" },
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "col-sm-8 col-sm-offset-2" },
+	                                    _react2["default"].createElement(
+	                                        "table",
+	                                        { className: "table table-bordered user-table", id: "followers" },
+	                                        _react2["default"].createElement(
+	                                            "thead",
+	                                            null,
+	                                            _react2["default"].createElement(_NavButtonsRowJsx2["default"], { prev: this.prevPage.bind(this), next: this.nextPage.bind(this), title: "Followers" })
+	                                        ),
+	                                        _react2["default"].createElement(
+	                                            "tbody",
+	                                            null,
+	                                            markup
+	                                        ),
+	                                        _react2["default"].createElement(
+	                                            "tfoot",
+	                                            null,
+	                                            _react2["default"].createElement(_NavButtonsRowJsx2["default"], { prev: this.prevPage.bind(this), next: this.nextPage.bind(this) })
+	                                        )
+	                                    )
+	                                )
+	                            ),
+	                            _react2["default"].createElement(_ModalJsx2["default"], {
+	                                msg: "Are you sure you want to follow userX?",
+	                                onShow: "show-follow-modal",
+	                                onUserInput: this.modalConfirm.bind(this)
 	                            })
 	                        )
-	                    ),
-	                    _react2["default"].createElement(
-	                        "div",
-	                        { className: "row" },
-	                        _react2["default"].createElement(
-	                            "div",
-	                            { className: "col-sm-8 col-sm-offset-2" },
-	                            _react2["default"].createElement(
-	                                "table",
-	                                { className: "table table-bordered user-table", id: "followers" },
-	                                _react2["default"].createElement(
-	                                    "thead",
-	                                    null,
-	                                    _react2["default"].createElement(_NavButtonsRowJsx2["default"], { prev: this.prevPage.bind(this), next: this.nextPage.bind(this), title: "Followers" })
-	                                ),
-	                                _react2["default"].createElement(
-	                                    "tbody",
-	                                    null,
-	                                    markup
-	                                ),
-	                                _react2["default"].createElement(
-	                                    "tfoot",
-	                                    null,
-	                                    _react2["default"].createElement(_NavButtonsRowJsx2["default"], { prev: this.prevPage.bind(this), next: this.nextPage.bind(this) })
-	                                )
-	                            )
-	                        )
-	                    ),
-	                    _react2["default"].createElement(_ModalJsx2["default"], {
-	                        msg: "Are you sure you want to follow userX?",
-	                        onShow: "show-follow-modal",
-	                        onUserInput: this.modalConfirm.bind(this)
-	                    })
+	                    )
 	                );
 	            } else {
 	                return false;
