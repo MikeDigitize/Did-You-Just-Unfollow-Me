@@ -87,18 +87,8 @@ export default class TwitterApp extends React.Component {
                     <div className="col-md-8 col-md-offset-2">
                         <Info />
                     </div>
-                    <div className="col-xs-12">
-                        <h4 className="table-title">Friends who don't follow you</h4>
-                    </div>
-                    <div className="col-md-8 col-md-offset-2">
-                        <FriendsWhoDontFollow />
-                    </div>
-                    <div className="col-xs-12">
-                        <h4 className="table-title">Followers you're not friends with</h4>
-                    </div>
-                    <div className="col-md-8 col-md-offset-2">
-                        <FollowersNotFriendsWith />
-                    </div>
+                    <FriendsWhoDontFollow />
+                    <FollowersNotFriendsWith />
                 </div>
             );
         }

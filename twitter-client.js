@@ -142,6 +142,8 @@ TwitterClient.prototype.createUserLists = function() {
         msg : "Getting data on friends who don't follow. This could take some time..."
     });
 
+    console.log("Getting data on friends who don't follow. This could take some time...");
+
     var getUsers = new Promise(function (resolve, reject) {
         this.getUserData(params, [], this.friendsWhoDontFollowIds, resolve, reject);
     }.bind(this));
@@ -152,6 +154,8 @@ TwitterClient.prototype.createUserLists = function() {
         this.broadcast({
             msg : "Getting data on followers you're not friends with. Please be patient..."
         });
+
+        console.log("Getting data on followers you're not friends with. Please be patient...");
 
         return new Promise(function (resolve, reject) {
             this.getUserData(params, [], this.followersNotFriendsWithIds, resolve, reject);
@@ -174,7 +178,8 @@ TwitterClient.prototype.createUserLists = function() {
 
     }.bind(this)).catch(function () {
         console.log("Error retrieving user data");
-        this.broadcast({
+
+            this.broadcast({
             error : true,
             pending : false,
             hasStarted : false,
@@ -196,8 +201,11 @@ TwitterClient.prototype.getUserData = function (params, arrTo, arrFrom, resolve,
     params.user_id = payload.join();
 
     client.post("/users/lookup.json", params, function(error, data) {
-        if (!error) {
-            arrTo = arrTo.concat(data);
+
+        console.log(error, data);
+
+        if (!error || error[0].code == 17) {
+            arrTo = arrTo.concat((data.errors ? [] : data));
             if(arrFrom.length) {
                 this.getUserData(params, arrTo, arrFrom, resolve, reject);
             }

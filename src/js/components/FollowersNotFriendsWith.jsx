@@ -223,41 +223,45 @@ export default class FNFWTable extends React.Component {
             });
 
             return (
-                <div>
-                    <div className="col-sm-8 col-sm-offset-2">
-                        <div className="col-sm-8 col-sm-offset-2">
-                            <ResultsSelect
-                                setPageResults={this.setPageResults.bind(this)}
-                                min={this.state.displaying.min + 1}
-                                max={this.state.displaying.max}
-                                count = {this.state.followersNotFriendsWith.length}
-                                id="followers-select"
+                <div className="col-xs-12">
+                    <h4 className="table-title">Followers you're not friends with</h4>
+                    <div className="col-md-8 col-md-offset-2">
+                        <div>
+                            <div className="col-sm-8 col-sm-offset-2">
+                                <div className="col-sm-8 col-sm-offset-2">
+                                    <ResultsSelect
+                                        setPageResults={this.setPageResults.bind(this)}
+                                        min={this.state.displaying.min + 1}
+                                        max={this.state.displaying.max}
+                                        count = {this.state.followersNotFriendsWith.length}
+                                        id="followers-select"
+                                    />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-sm-8 col-sm-offset-2">
+                                    <table className="table table-bordered user-table" id="followers">
+                                        <thead>
+                                        <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} title="Followers" />
+                                        </thead>
+                                        <tbody>
+                                        { markup }
+                                        </tbody>
+                                        <tfoot>
+                                        <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} />
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <Modal
+                                msg="Are you sure you want to follow userX?"
+                                onShow="show-follow-modal"
+                                onUserInput={ this.modalConfirm.bind(this) }
                             />
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-sm-8 col-sm-offset-2">
-                            <table className="table table-bordered user-table" id="followers">
-                                <thead>
-                                <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} title="Followers" />
-                                </thead>
-                                <tbody>
-                                { markup }
-                                </tbody>
-                                <tfoot>
-                                <NavBtnsRow prev={this.prevPage.bind(this)} next={this.nextPage.bind(this)} />
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
-                    <Modal
-                        msg="Are you sure you want to follow userX?"
-                        onShow="show-follow-modal"
-                        onUserInput={ this.modalConfirm.bind(this) }
-                    />
                 </div>
             );
-
         }
         else {
             return false;
